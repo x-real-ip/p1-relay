@@ -1,8 +1,8 @@
 FROM golang:1.22-alpine AS build
 WORKDIR /src
 COPY go.mod ./
-COPY main.go ./
-RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/p1-relay .
+COPY src/ ./src/
+RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/p1-relay ./src
 
 FROM gcr.io/distroless/static-debian12:nonroot
 COPY --from=build /out/p1-relay /p1-relay
