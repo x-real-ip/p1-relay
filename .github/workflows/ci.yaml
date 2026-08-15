@@ -28,7 +28,9 @@ jobs:
         run: go vet ./...
 
       - name: Build
-        run: go build ./src
+        # -o is required: without it the binary would be named after the
+        # package directory ("src"), which already exists.
+        run: go build -o /dev/null ./src
 
   image:
     # Only publish from the default branch and tags, never from pull requests.
