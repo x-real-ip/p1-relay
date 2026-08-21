@@ -8,7 +8,7 @@ sooner than the same data routed through
 
 A P1 reader running [esp-link](https://github.com/jeelabs/esp-link) accepts only
 one TCP connection at a time. Point p1-relay at the reader and it fans the
-telegram stream out to as many programs as you like: dsmr-reader, Home Assistant,
+telegram stream out to as many programs as you like, for example: dsmr-reader, Home Assistant,
 Node-RED, a home battery, all at once.
 
 I use the [SlimmeLezer](https://www.zuidwijk.com/product/slimmelezer/) by
