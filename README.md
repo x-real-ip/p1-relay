@@ -11,12 +11,12 @@ one TCP connection at a time. Point p1-relay at the reader and it fans the
 telegram stream out to as many programs as you like dsmr-reader, Home Assistant,
 Node-RED, a home battery, all at once.
 
-Built for the [SlimmeLezer](https://www.zuidwijk.com/product/slimmelezer/) by
+I use the [SlimmeLezer](https://www.zuidwijk.com/product/slimmelezer/) by
 Marcel Zuidwijk ([@zuidwijk](https://github.com/zuidwijk)), flashed with the
 esp-link firmware offered on its product page rather than the default
 [ESPHome build](https://github.com/zuidwijk/dsmr). ESPHome parses the telegram
-on the device and does not hand out the raw stream, but any reader that exposes
-raw telegrams over TCP will work.
+on the device and does not hand out the raw stream.  
+But any reader that exposes raw telegrams over TCP will work.
 
 New consumers are only connected at a telegram boundary (`/`), so nobody ever
 receives half a telegram. Existing consumers get the bytes unchanged, with no
