@@ -1,7 +1,5 @@
 # p1-relay
 
-# p1-relay
-
 TCP relay for DSMR/P1 telegrams. One upstream connection, many consumers.
 
 A P1 reader based on [esp-link](https://github.com/jeelabs/esp-link) accepts only
