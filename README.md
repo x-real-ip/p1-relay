@@ -1,26 +1,28 @@
 # p1-relay
 
+
+
 TCP relay for DSMR/P1 telegrams. One upstream connection, many consumers. It's
 lightweight, runs as a non-root user, and passes telegrams through untouched so
 consumers see them the moment the meter sends them. For example it is seconds
 sooner than the same data routed through
 [dsmr-reader](https://github.com/dsmrreader/dsmr-reader) and out over MQTT.
 
+<p align="left">
+  <img src="assets/p1-relay-diagram.png" alt="p1-relay diagram" width="600">
+</p>
+
 A P1 reader running [esp-link](https://github.com/jeelabs/esp-link) accepts only
 one TCP connection at a time. Point p1-relay at the reader and it fans the
-telegram stream out to as many programs as you like, for example: dsmr-reader, Home Assistant,
-Node-RED, a home battery, all at once.
+telegram stream out to as many programs as you like, for example: dsmr-reader,
+Home Assistant, Node-RED, a home battery, all at once.
 
-I use the [SlimmeLezer](https://www.zuidwijk.com/product/slimmelezer/) by
-Marcel Zuidwijk ([@zuidwijk](https://github.com/zuidwijk)), flashed with the
-esp-link firmware offered on its product page rather than the default
+Any reader that exposes raw telegrams over TCP will work but I use the
+[SlimmeLezer](https://www.zuidwijk.com/product/slimmelezer/) by Marcel Zuidwijk
+([@zuidwijk](https://github.com/zuidwijk)), flashed with the esp-link firmware
+offered on its product page rather than the default
 [ESPHome build](https://github.com/zuidwijk/dsmr). ESPHome parses the telegram
-on the device and does not hand out the raw stream.  
-But any reader that exposes raw telegrams over TCP will work.
-
-New consumers are only connected at a telegram boundary (`/`), so nobody ever
-receives half a telegram. Existing consumers get the bytes unchanged, with no
-added latency.
+on the device and does not hand out the raw stream.
 
 ## Run it
 
